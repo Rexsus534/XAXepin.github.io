@@ -1,1373 +1,434 @@
+
 <!DOCTYPE html>
-<html lang="tr" class="dark scroll-smooth">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XAX E-PIN | Dijital Dünyanın Yeni Adresi</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Rajdhani for futuristic gaming titles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Rajdhani', 'sans-serif'],
-                    },
-                    colors: {
-                        xax: {
-                            bg: '#060A14',
-                            card: '#0B1222',
-                            border: '#17233B',
-                            blue: '#2563EB',
-                            cyan: '#38BDF8',
-                        }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'orbit': 'orbit 12s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        orbit: {
-                            '0%': { transform: 'rotate(-16deg) scale(1)' },
-                            '50%': { transform: 'rotate(-14deg) scale(1.03)' },
-                            '100%': { transform: 'rotate(-16deg) scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #060A14;
-            color: #F8FAFC;
-            overflow-x: hidden;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #060A14;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1E293B;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563EB;
-        }
-        /* Glassmorphism & Glow Utilities */
-        .glass-panel {
-            background: rgba(11, 18, 34, 0.78);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(56, 189, 248, 0.14);
-        }
-        .xax-glow-btn {
-            background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 50%, #0EA5E9 100%);
-            box-shadow: 0 0 24px rgba(37, 99, 235, 0.45);
-            transition: all 0.25s ease;
-        }
-        .xax-glow-btn:hover {
-            box-shadow: 0 0 34px rgba(56, 189, 248, 0.65);
-            transform: translateY(-1px);
-        }
-        .hero-radial {
-            background: radial-gradient(circle at 72% 45%, rgba(37, 99, 235, 0.28) 0%, rgba(14, 165, 233, 0.1) 32%, rgba(6, 10, 20, 0) 68%);
-        }
-        .text-gradient-cyan {
-            background: linear-gradient(90deg, #38BDF8 0%, #2563EB 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .xax-logo-text {
-            background: linear-gradient(180deg, #FFFFFF 20%, #94A3B8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .xax-logo-accent {
-            background: linear-gradient(180deg, #38BDF8 10%, #1D4ED8 95%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .cat-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .cat-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.5);
-            box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.45);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090a0e">
+<title>XAX E Epin Store</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#090a0e;--panel:#11131a;--panel2:#171a23;--gold:#e7bd59;--gold2:#f8d982;--text:#f5f5f5;--muted:#9296a3;--line:#282b35}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+.topbar{background:#0d0e13;border-bottom:1px solid var(--line);padding:10px 0;text-align:center;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.5px}
+header{position:sticky;top:0;z-index:20;background:rgba(9,10,14,.94);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:28px;color:#b9bbc4;font-size:13px}
+.navlinks a:hover{color:var(--gold)}
+.navright{display:flex;align-items:center;gap:10px}
+.navbtn{background:var(--panel2);color:white;border:1px solid var(--line);border-radius:10px;padding:11px 15px;font-size:12px;font-weight:700}
+.navbtn:hover{border-color:var(--gold)}
+.cart-count{background:var(--gold);color:#17120a;border-radius:20px;padding:2px 7px;margin-left:5px}
+.hero{padding:75px 0 60px;background:radial-gradient(ellipse at 80% 30%,rgba(231,189,89,.13),transparent 42%),radial-gradient(ellipse at 10% 80%,rgba(74,75,130,.12),transparent 35%)}
+.hero-content{max-width:680px}
+.tag{display:inline-block;padding:8px 13px;background:rgba(231,189,89,.10);border:1px solid rgba(231,189,89,.25);color:var(--gold);border-radius:30px;font-size:11px;font-weight:800;margin-bottom:23px}
+.hero h1{font-size:clamp(38px,6vw,65px);line-height:1.08;font-weight:900;letter-spacing:-2.5px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--muted);line-height:1.8;margin:22px 0 27px;font-size:14px;max-width:540px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#17120a;border:0;padding:15px 23px;border-radius:10px;font-weight:900;font-size:13px}
+.secondary{background:var(--panel2);color:white;border:1px solid var(--line);padding:15px 23px;border-radius:10px;font-weight:700;font-size:13px}
+.primary:hover{filter:brightness(1.08)}
+.secondary:hover{border-color:var(--gold)}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 0 55px}
+.benefit{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px;display:flex;align-items:center;gap:13px}
+.benefit-icon{font-size:22px}
+.benefit strong{display:block;font-size:12px;margin-bottom:5px}
+.benefit small{color:var(--muted);font-size:10px}
+.section{padding:35px 0 65px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:25px}
+.section-head h2{font-size:27px;font-weight:900}
+.section-head p{color:var(--muted);font-size:12px;margin-top:7px}
+.search{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px;color:white;outline:none;width:240px}
+.search:focus{border-color:var(--gold)}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:23px}
+.filter{background:var(--panel);color:#b7bac4;border:1px solid var(--line);border-radius:30px;padding:10px 17px;font-size:11px;font-weight:700}
+.filter.active,.filter:hover{background:var(--gold);color:#17120a;border-color:var(--gold)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.2s;position:relative}
+.product:hover{transform:translateY(-5px);border-color:rgba(231,189,89,.6)}
+.product-art{height:210px;position:relative;background:#101522;overflow:hidden;cursor:pointer}
+.product-art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.product:hover .product-art img{transform:scale(1.045)}
+.favorite{position:absolute;top:10px;right:10px;width:33px;height:33px;border-radius:50%;background:#171a23e8;border:1px solid #414450;color:white;font-size:18px;z-index:3}
+.favorite.active{color:#ff6978}
+.product-info{padding:16px}
+.product-category{color:var(--gold);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.product h3{font-size:14px;margin:8px 0 7px}
+.product-desc{font-size:10px;color:var(--muted);min-height:28px;line-height:1.5}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:15px}
+.price{font-size:17px;font-weight:900;color:var(--gold)}
+.add{border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:8px;padding:9px 12px;font-size:10px;font-weight:800}
+.add:hover{background:var(--gold);color:#17120a}
+.details-link{background:none;border:0;color:#999;font-size:10px;margin-top:12px}
+.empty{grid-column:1/-1;text-align:center;padding:50px 10px;color:var(--muted)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-bottom:65px}
+.info-card{background:linear-gradient(135deg,#191a20,#11131a);border:1px solid var(--line);border-radius:16px;padding:28px}
+.info-card h3{font-size:18px;margin-bottom:12px}
+.info-card p{font-size:12px;line-height:1.8;color:var(--muted)}
+.big-icon{font-size:28px;margin-bottom:17px}
+.faq{padding:30px 0 70px}
+.faq h2{font-size:26px;margin-bottom:22px}
+.faq-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:9px;overflow:hidden}
+.faq-question{width:100%;padding:17px;display:flex;justify-content:space-between;color:white;background:none;border:0;text-align:left;font-size:12px;font-weight:700}
+.faq-answer{display:none;padding:0 17px 17px;color:var(--muted);font-size:11px;line-height:1.7}
+.faq-item.open .faq-answer{display:block}
+footer{background:#0d0e13;border-top:1px solid var(--line);padding:35px 0}
+.footer-content{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:11px;color:var(--muted);margin-top:10px}
+.footer-links{display:flex;gap:20px;color:var(--muted);font-size:11px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;display:none;align-items:center;justify-content:center;padding:15px}
+.overlay.show{display:flex}
+.modal{background:#12141b;border:1px solid #343743;border-radius:17px;width:min(470px,100%);max-height:85vh;overflow:auto;padding:24px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-head h2{font-size:19px}
+.close{background:#252833;border:0;color:white;width:32px;height:32px;border-radius:8px;font-size:18px}
+.cart-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.cart-thumb{width:48px;height:48px;object-fit:cover;border-radius:7px}
+.cart-details{flex:1}
+.cart-details strong{font-size:12px;display:block}
+.cart-details small{color:var(--muted);font-size:10px}
+.quantity{display:flex;align-items:center;gap:8px}
+.quantity button{background:#292c37;color:white;border:0;width:25px;height:25px;border-radius:6px}
+.quantity span{font-size:12px}
+.cart-total{display:flex;justify-content:space-between;margin:20px 0;font-size:14px;font-weight:800}
+.cart-total strong{color:var(--gold);font-size:19px}
+.full{width:100%}
+.notice{font-size:10px;color:var(--muted);line-height:1.7;margin-top:13px}
+.detail-image{width:100%;max-height:250px;object-fit:contain;background:#0c101a;border-radius:12px;margin-bottom:18px}
+.detail-price{font-size:23px;color:var(--gold);font-weight:900;margin:15px 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gold);color:#17120a;padding:13px 20px;border-radius:10px;font-size:12px;font-weight:800;z-index:100;transition:.3s}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:900px){.product-grid{grid-template-columns:repeat(3,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){
+.navlinks{display:none}.nav{height:65px}.logo{font-size:21px}
+.hero{padding:55px 0}.hero h1{letter-spacing:-1.5px}
+.section-head{align-items:start;flex-direction:column}.search{width:100%}
+.product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+.product-art{height:155px}.product-info{padding:12px}
+.product h3{font-size:12px}.price{font-size:14px}
+.add{padding:8px;font-size:9px}.benefit{padding:14px}
+.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:370px){.product-grid{grid-template-columns:1fr}.product-art{height:210px}}
+</style>
 </head>
-<body class="antialiased selection:bg-blue-600 selection:text-white">
-
-    <!-- Toast Notification Container -->
-    <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
-
-    <!-- TOP NAVIGATION BAR -->
-    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-3">
-                
-                <!-- Brand Logo -->
-                <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2.5 shrink-0 group">
-                    <div class="flex flex-col leading-none">
-                        <div class="text-2xl sm:text-3xl font-black tracking-tighter italic font-display flex items-center">
-                            <span class="xax-logo-text">XA</span><span class="xax-logo-accent drop-shadow-[0_0_12px_rgba(56,189,248,0.6)]">X</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 mt-0.5">
-                            <span class="h-[1px] w-4 bg-gradient-to-r from-transparent to-cyan-400"></span>
-                            <span class="text-[9px] font-bold tracking-[0.35em] text-slate-300 uppercase">E-PIN</span>
-                            <span class="h-[1px] w-4 bg-gradient-to-l from-transparent to-cyan-400"></span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
-                    <a href="#" onclick="filterCategory('all')" class="relative py-6 text-white font-semibold flex items-center gap-2">
-                        <i class="fa-solid fa-house text-cyan-400 text-xs"></i> Ana Sayfa
-                        <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 shadow-[0_0_10px_#38BDF8]"></span>
-                    </a>
-                    <a href="#urunler" class="text-slate-400 hover:text-white transition flex items-center gap-2">
-                        <i class="fa-solid fa-bag-shopping text-xs"></i> Mağaza <i class="fa-solid fa-chevron-down text-[10px] opacity-60"></i>
-                    </a>
-                    <a href="#destek" onclick="openSupportModal()" class="text-slate-400 hover:text-white transition flex items-center gap-2">
-                        <i class="fa-solid fa-headset text-xs"></i> Destek
-                    </a>
-                    <button onclick="openOrdersModal()" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-2">
-                        <i class="fa-solid fa-key text-xs text-cyan-400"></i> Kodlarım
-                        <span id="nav-orders-badge" class="hidden bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-[10px] px-1.5 py-0.2 rounded-full font-bold">0</span>
-                    </button>
-                </nav>
-
-                <!-- Search Input (Desktop & Tablet) -->
-                <div class="hidden md:flex items-center relative flex-1 max-w-xs">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-xs"></i>
-                    <input 
-                        type="text" 
-                        id="search-input"
-                        oninput="handleSearch(this.value)"
-                        placeholder="Ürün ara... (örn: VP, Steam, Robux)" 
-                        class="w-full bg-[#090F1D] border border-slate-800 focus:border-cyan-500/60 rounded-full py-2 pl-9 pr-4 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition"
-                    >
-                </div>
-
-                <!-- Right Controls: Wallet Balance, Auth, Cart -->
-                <div class="flex items-center gap-2 sm:gap-3">
-                    
-                    <!-- Wallet Balance Pill + Deposit Button -->
-                    <div class="flex items-center bg-[#0B1326] border border-blue-500/30 rounded-full p-1 pl-3 shadow-inner">
-                        <div class="flex flex-col mr-2">
-                            <span class="text-[9px] uppercase tracking-wider text-slate-400 leading-none">Bakiye</span>
-                            <span id="wallet-balance-display" class="text-xs sm:text-sm font-bold text-cyan-400 leading-tight">₺0,00</span>
-                        </div>
-                        <button 
-                            onclick="openDepositModal()" 
-                            class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-full flex items-center gap-1 transition shadow-[0_0_12px_rgba(37,99,235,0.5)] cursor-pointer"
-                            title="Hesabına Bakiye Yükle"
-                        >
-                            <i class="fa-solid fa-plus text-[10px]"></i>
-                            <span class="hidden sm:inline">Bakiye Yükle</span>
-                        </button>
-                    </div>
-
-                    <!-- User Profile / Auth Button -->
-                    <button 
-                        onclick="openAuthModal()" 
-                        id="auth-btn"
-                        class="hidden sm:flex items-center gap-2 bg-[#0E1629] hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-medium px-3.5 py-2.5 rounded-full transition cursor-pointer"
-                    >
-                        <i class="fa-solid fa-user text-cyan-400"></i>
-                        <span id="auth-btn-text">Giriş Yap / Kayıt Ol</span>
-                    </button>
-
-                    <!-- My Codes Button (Mobile shortcut) -->
-                    <button 
-                        onclick="openOrdersModal()" 
-                        class="lg:hidden relative p-2.5 rounded-full bg-[#0E1629] border border-slate-800 text-slate-300 hover:text-cyan-400 transition"
-                        title="Satın Aldığım Kodlar"
-                    >
-                        <i class="fa-solid fa-key text-sm"></i>
-                    </button>
-
-                    <!-- Cart Button -->
-                    <button 
-                        onclick="toggleCartDrawer(true)" 
-                        class="relative p-2.5 rounded-full bg-[#0E1629] hover:bg-slate-800 border border-slate-800 text-white transition cursor-pointer"
-                        aria-label="Sepetim"
-                    >
-                        <i class="fa-solid fa-cart-shopping text-sm"></i>
-                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#060A14]">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Search Bar -->
-            <div class="md:hidden pb-3">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input 
-                        type="text" 
-                        oninput="handleSearch(this.value)"
-                        placeholder="Oyun kodu, VP, Steam cüzdan ara..." 
-                        class="w-full bg-[#090F1D] border border-slate-800 focus:border-cyan-500/60 rounded-full py-2 pl-9 pr-4 text-xs text-slate-200 placeholder-slate-500 focus:outline-none"
-                    >
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden hero-radial border-b border-slate-800/60">
-        <!-- Subtle futuristic grid overlay -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b1a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b1a_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                
-                <!-- Left Hero Copy -->
-                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/40 text-cyan-300 text-xs font-bold tracking-wider uppercase shadow-[0_0_20px_rgba(37,99,235,0.25)]">
-                        <i class="fa-solid fa-star text-cyan-400 text-[10px]"></i>
-                        <span>XAX DIGITAL STORE</span>
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
-                        <span class="block text-white">Dijital Dünyanın</span>
-                        <span class="block text-gradient-cyan mt-1">Yeni Adresi</span>
-                    </h1>
-
-                    <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal">
-                        Oyun kodları, E-Pin ve dijital ürünler tek adreste. Bakiyeni yükle, saniyeler içinde kodunu otomatik teslim al!
-                    </p>
-
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#urunler" class="xax-glow-btn text-white font-bold px-7 py-3.5 rounded-full inline-flex items-center gap-2.5 text-sm sm:text-base">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span>Alışverişe Başla</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                        <button onclick="openDepositModal()" class="px-6 py-3.5 rounded-full bg-[#0E172A] hover:bg-slate-800 border border-slate-700/80 text-slate-200 font-semibold text-sm sm:text-base inline-flex items-center gap-2 transition cursor-pointer">
-                            <i class="fa-solid fa-wallet text-cyan-400"></i>
-                            <span>Hemen Bakiye Yükle</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right Hero Artwork: Glowing XAX Emblem + Cyber Hooded Character SVG -->
-                <div class="lg:col-span-6 relative flex items-center justify-center min-h-[290px] sm:min-h-[340px]">
-                    <!-- Ambient Blue Glows -->
-                    <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-blue-600/20 blur-[90px] absolute"></div>
-                    <div class="w-48 h-48 rounded-full bg-cyan-400/20 blur-[60px] absolute right-10 top-6"></div>
-
-                    <!-- Orbital Glowing Ring + XAX Emblem -->
-                    <div class="relative z-10 flex flex-col items-center justify-center select-none animate-float mr-0 sm:mr-24">
-                        <!-- Glowing Orbital Ellipse SVG -->
-                        <svg class="w-[310px] sm:w-[410px] h-[190px] sm:h-[230px] absolute pointer-events-none animate-orbit" viewBox="0 0 420 220" fill="none">
-                            <defs>
-                                <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.95"/>
-                                    <stop offset="50%" stop-color="#2563EB" stop-opacity="0.4"/>
-                                    <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.95"/>
-                                </linearGradient>
-                                <filter id="glowBlur" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="5" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-                            <ellipse cx="210" cy="110" rx="190" ry="64" stroke="url(#orbitGrad)" stroke-width="4" filter="url(#glowBlur)" />
-                            <ellipse cx="210" cy="110" rx="190" ry="64" stroke="#7DD3FC" stroke-width="1.5" stroke-dasharray="140 60 220 40" />
-                            <circle cx="388" cy="84" r="5" fill="#7DD3FC" filter="url(#glowBlur)" />
-                        </svg>
-
-                        <!-- Giant XAX Typography -->
-                        <div class="relative text-center px-6">
-                            <div class="text-7xl sm:text-8xl font-black italic tracking-tighter font-display leading-none drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]">
-                                <span class="xax-logo-text">XA</span><span class="xax-logo-accent drop-shadow-[0_0_24px_rgba(56,189,248,0.75)]">X</span>
-                            </div>
-                            <div class="mt-1 flex items-center justify-center gap-3">
-                                <span class="h-[2px] w-10 bg-gradient-to-r from-transparent via-cyan-400 to-blue-500"></span>
-                                <span class="text-sm sm:text-base font-bold tracking-[0.55em] text-slate-200 uppercase drop-shadow">E-PIN</span>
-                                <span class="h-[2px] w-10 bg-gradient-to-l from-transparent via-cyan-400 to-blue-500"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Futuristic Cyber Hooded Assassin Silhouette (Custom SVG) -->
-                    <div class="hidden sm:block absolute -right-4 bottom-[-30px] w-64 h-80 pointer-events-none opacity-95">
-                        <svg viewBox="0 0 260 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_0_25px_rgba(37,99,235,0.45)]">
-                            <defs>
-                                <linearGradient id="cloakGrad" x1="40" y1="20" x2="220" y2="310" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#1E293B"/>
-                                    <stop offset="55%" stop-color="#0B1120"/>
-                                    <stop offset="100%" stop-color="#04070F"/>
-                                </linearGradient>
-                                <linearGradient id="rimLight" x1="120" y1="15" x2="210" y2="250" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#38BDF8"/>
-                                    <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.1"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Energy Blade Glow -->
-                            <path d="M210 150L252 65L242 62L196 146Z" fill="#38BDF8" opacity="0.85"/>
-                            <path d="M206 155L255 58" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round"/>
-                            <!-- Shoulders & Tactical Cloak -->
-                            <path d="M45 320C50 235 68 180 95 155L135 145L185 160C215 185 230 245 238 320H45Z" fill="url(#cloakGrad)" stroke="url(#rimLight)" stroke-width="2"/>
-                            <!-- Armor Chest Lines -->
-                            <path d="M105 180L138 220L175 182" stroke="#2563EB" stroke-width="2.5" stroke-opacity="0.7"/>
-                            <path d="M90 225L138 265L188 225" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.4"/>
-                            <!-- Hood -->
-                            <path d="M92 145C84 102 96 48 138 36C178 26 202 68 198 118C196 138 186 152 176 160L138 168L92 145Z" fill="url(#cloakGrad)" stroke="#38BDF8" stroke-width="2"/>
-                            <!-- Shadowed Face -->
-                            <path d="M114 96C114 76 128 64 146 66C164 68 174 82 172 104C170 124 156 138 142 138C126 138 114 120 114 96Z" fill="#04070E"/>
-                            <!-- Glowing Cyber Eyes -->
-                            <path d="M126 96L139 101L128 103Z" fill="#38BDF8"/>
-                            <path d="M162 96L149 101L160 103Z" fill="#38BDF8"/>
-                            <circle cx="133" cy="99" r="5" fill="#38BDF8" opacity="0.45"/>
-                            <circle cx="155" cy="99" r="5" fill="#38BDF8" opacity="0.45"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST BADGES BAR (4 Columns) -->
-    <section class="bg-[#080D1A] border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Feature 1 -->
-                <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-900/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-xl shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-sm">Anında Teslimat</h3>
-                        <p class="text-slate-400 text-xs mt-0.5">Siparişlerin hemen hazır!</p>
-                    </div>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-900/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-xl shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-sm">Güvenli Alışveriş</h3>
-                        <p class="text-slate-400 text-xs mt-0.5">Bilgilerin güvende.</p>
-                    </div>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-900/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-xl shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-sm">7/24 Destek</h3>
-                        <p class="text-slate-400 text-xs mt-0.5">Her zaman yanınızdayız.</p>
-                    </div>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-900/50 transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-xl shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-sm">Uygun Fiyatlar</h3>
-                        <p class="text-slate-400 text-xs mt-0.5">En iyi fiyat garantisi.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-
-        <!-- CATEGORY CARDS GRID (4 Main Categories) -->
-        <section aria-label="Popüler Kategoriler">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                
-                <!-- 1. Steam E-Pin -->
-                <div onclick="filterCategory('steam')" class="cat-card group relative h-44 rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-br from-[#0F2347] via-[#0B1528] to-[#080E1C] p-5 flex flex-col justify-between cursor-pointer">
-                    <!-- Decorative background game tiles effect -->
-                    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#38BDF8_1px,transparent_1px)] [background-size:14px_14px]"></div>
-                    <div class="relative z-10 flex justify-center pt-1">
-                        <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl shadow-lg group-hover:scale-110 transition">
-                            <i class="fa-brands fa-steam"></i>
-                        </div>
-                    </div>
-                    <div class="relative z-10 flex items-end justify-between">
-                        <div>
-                            <h3 class="text-white font-bold text-base">Steam E-Pin</h3>
-                            <p class="text-slate-400 text-xs">Oyun bakiyeleri</p>
-                        </div>
-                        <span class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-blue-600 text-white flex items-center justify-center transition">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 2. Valorant VP -->
-                <div onclick="filterCategory('valorant')" class="cat-card group relative h-44 rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-br from-[#3B1219] via-[#1B111C] to-[#0B101D] p-5 flex flex-col justify-between cursor-pointer">
-                    <div class="absolute -right-4 -top-4 w-32 h-32 bg-rose-600/20 rounded-full blur-2xl"></div>
-                    <div class="relative z-10 flex justify-center pt-1">
-                        <div class="w-14 h-14 rounded-2xl bg-rose-500/15 backdrop-blur-md border border-rose-500/30 flex items-center justify-center shadow-lg group-hover:scale-110 transition">
-                            <!-- Valorant V Custom SVG -->
-                            <svg class="w-8 h-8 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M2 4.5L9.5 14H14.5L2 4.5ZM22 4.5L13.5 15.5H18.5L22 11V4.5ZM2 4.5V11L8.5 19.5H13.5L2 4.5Z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="relative z-10 flex items-end justify-between">
-                        <div>
-                            <h3 class="text-white font-bold text-base">Valorant VP</h3>
-                            <p class="text-slate-400 text-xs">Oyun puanları</p>
-                        </div>
-                        <span class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-rose-600 text-white flex items-center justify-center transition">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 3. Roblox Robux -->
-                <div onclick="filterCategory('roblox')" class="cat-card group relative h-44 rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-br from-[#3A1E16] via-[#1B1316] to-[#0B101D] p-5 flex flex-col justify-between cursor-pointer">
-                    <div class="absolute -right-4 -top-4 w-32 h-32 bg-amber-600/20 rounded-full blur-2xl"></div>
-                    <div class="relative z-10 flex justify-center pt-1">
-                        <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg group-hover:scale-110 transition">
-                            <!-- Roblox Tilted Square SVG -->
-                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M5.4 2L2 18.6L18.6 22L22 5.4L5.4 2ZM13.6 14.3L9.7 13.5L10.5 9.6L14.4 10.4L13.6 14.3Z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="relative z-10 flex items-end justify-between">
-                        <div>
-                            <h3 class="text-white font-bold text-base">Roblox Robux</h3>
-                            <p class="text-slate-400 text-xs">Roblox ürünleri</p>
-                        </div>
-                        <span class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-amber-600 text-white flex items-center justify-center transition">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 4. Dijital Kodlar -->
-                <div onclick="filterCategory('dijital')" class="cat-card group relative h-44 rounded-2xl overflow-hidden border border-slate-800 bg-gradient-to-br from-[#27174A] via-[#131229] to-[#0B101D] p-5 flex flex-col justify-between cursor-pointer">
-                    <div class="absolute -right-4 -top-4 w-32 h-32 bg-purple-600/25 rounded-full blur-2xl"></div>
-                    <div class="relative z-10 flex items-center justify-center gap-2 pt-2">
-                        <div class="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-700 flex items-center justify-center text-emerald-400 text-base -rotate-6 group-hover:rotate-0 transition">
-                            <i class="fa-brands fa-google-play"></i>
-                        </div>
-                        <div class="w-11 h-11 rounded-xl bg-slate-900/90 border border-slate-700 flex items-center justify-center text-white text-lg z-10 shadow-md group-hover:scale-110 transition">
-                            <i class="fa-brands fa-apple"></i>
-                        </div>
-                        <div class="w-10 h-10 rounded-xl bg-blue-600/90 border border-blue-400/50 flex items-center justify-center text-white text-base rotate-6 group-hover:rotate-0 transition">
-                            <i class="fa-brands fa-playstation"></i>
-                        </div>
-                    </div>
-                    <div class="relative z-10 flex items-end justify-between">
-                        <div>
-                            <h3 class="text-white font-bold text-base">Dijital Kodlar</h3>
-                            <p class="text-slate-400 text-xs">Hediye kartları</p>
-                        </div>
-                        <span class="w-8 h-8 rounded-full bg-white/10 group-hover:bg-purple-600 text-white flex items-center justify-center transition">
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOTTOM PROMO BANNER (Matching image) -->
-        <section class="relative rounded-2xl overflow-hidden border border-blue-500/30 bg-gradient-to-r from-[#0B1222] via-[#0F1E3D] to-[#0B1730] p-5 sm:p-6 shadow-[0_0_35px_rgba(37,99,235,0.15)]">
-            <!-- Geometric X accents in background -->
-            <div class="absolute right-44 top-0 bottom-0 w-40 bg-blue-500/10 skew-x-[-25deg] pointer-events-none"></div>
-            <div class="absolute right-28 top-0 bottom-0 w-2 bg-cyan-400/30 skew-x-[-25deg] pointer-events-none"></div>
-            
-            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-400 text-2xl shrink-0">
-                        <i class="fa-solid fa-crown"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-white font-bold text-base sm:text-lg">XAX E-Pin ile Dijital Dünyanın Keyfini Çıkarın!</h2>
-                        <p class="text-slate-400 text-xs sm:text-sm">Güvenilir, hızlı ve uygun fiyatlı dijital ürünler için doğru adres.</p>
-                    </div>
-                </div>
-                <a href="#urunler" class="xax-glow-btn text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-xl inline-flex items-center gap-2 shrink-0">
-                    <span>Şimdi Keşfet</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- PRODUCT CATALOG SECTION -->
-        <section id="urunler" class="pt-4 space-y-6">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl font-extrabold text-white flex items-center gap-2.5">
-                        <span class="w-2 h-7 rounded-full bg-gradient-to-b from-cyan-400 to-blue-600"></span>
-                        <span>Popüler E-Pin & Oyun Kodları</span>
-                    </h2>
-                    <p class="text-slate-400 text-xs sm:text-sm mt-1">Bakiyenizle satın aldığınız tüm kodlar sistem tarafından otomatik olarak anında teslim edilir.</p>
-                </div>
-
-                <!-- Category Filter Pills -->
-                <div id="category-tabs" class="flex flex-wrap items-center gap-2">
-                    <button onclick="filterCategory('all')" data-cat="all" class="cat-tab active px-4 py-2 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] transition cursor-pointer">
-                        Tümü
-                    </button>
-                    <button onclick="filterCategory('valorant')" data-cat="valorant" class="cat-tab px-4 py-2 rounded-full text-xs font-semibold bg-[#0D1528] text-slate-300 hover:text-white border border-slate-800 transition cursor-pointer">
-                        Valorant VP
-                    </button>
-                    <button onclick="filterCategory('steam')" data-cat="steam" class="cat-tab px-4 py-2 rounded-full text-xs font-semibold bg-[#0D1528] text-slate-300 hover:text-white border border-slate-800 transition cursor-pointer">
-                        Steam E-Pin
-                    </button>
-                    <button onclick="filterCategory('roblox')" data-cat="roblox" class="cat-tab px-4 py-2 rounded-full text-xs font-semibold bg-[#0D1528] text-slate-300 hover:text-white border border-slate-800 transition cursor-pointer">
-                        Roblox Robux
-                    </button>
-                    <button onclick="filterCategory('dijital')" data-cat="dijital" class="cat-tab px-4 py-2 rounded-full text-xs font-semibold bg-[#0D1528] text-slate-300 hover:text-white border border-slate-800 transition cursor-pointer">
-                        Dijital Kodlar
-                    </button>
-                </div>
-            </div>
-
-            <!-- Products Grid -->
-            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                <!-- Rendered dynamically by JS -->
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="mt-20 border-t border-slate-800/80 bg-[#050811]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="space-y-3">
-                    <div class="text-2xl font-black italic tracking-tighter font-display">
-                        <span class="xax-logo-text">XA</span><span class="xax-logo-accent">X</span> <span class="text-xs tracking-[0.3em] not-italic text-slate-400">E-PIN</span>
-                    </div>
-                    <p class="text-slate-400 text-xs leading-relaxed">
-                        Türkiye'nin en hızlı ve güvenilir dijital oyun kodu, E-Pin ve hediye kartı platformu. 7/24 otomatik teslimat altyapısı.
-                    </p>
-                    <div class="flex items-center gap-3 pt-2 text-slate-400">
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">256-BIT SSL</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-cyan-400">ANINDA TESLİMAT</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold text-sm mb-3">Popüler Kategoriler</h4>
-                    <ul class="space-y-2 text-xs text-slate-400">
-                        <li><button onclick="filterCategory('valorant')" class="hover:text-cyan-400 transition">Valorant Points (VP)</button></li>
-                        <li><button onclick="filterCategory('steam')" class="hover:text-cyan-400 transition">Steam Cüzdan Kodları</button></li>
-                        <li><button onclick="filterCategory('roblox')" class="hover:text-cyan-400 transition">Roblox Robux E-Pin</button></li>
-                        <li><button onclick="filterCategory('dijital')" class="hover:text-cyan-400 transition">Google Play & PSN Kartları</button></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold text-sm mb-3">Müşteri İşlemleri</h4>
-                    <ul class="space-y-2 text-xs text-slate-400">
-                        <li><button onclick="openDepositModal()" class="hover:text-cyan-400 transition">Bakiye Yükle (Kart / Havale / Papara)</button></li>
-                        <li><button onclick="openOrdersModal()" class="hover:text-cyan-400 transition">Satın Aldığım E-Pin Kodları</button></li>
-                        <li><button onclick="openSupportModal()" class="hover:text-cyan-400 transition">7/24 Canlı Destek Talebi</button></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold text-sm mb-3">Mağaza Yönetimi</h4>
-                    <p class="text-slate-400 text-xs mb-3">Site sahibi olarak yeni ürün ekleyebilir veya gelen bakiye/sipariş kayıtlarını inceleyebilirsiniz.</p>
-                    <button onclick="openAdminModal()" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyan-500/30 text-cyan-400 text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer">
-                        <i class="fa-solid fa-sliders"></i>
-                        <span>Yönetici / Stok Paneli</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="border-t border-slate-800/80 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-                <p>© 2026 XAX E-PIN Digital Store. Tüm hakları saklıdır.</p>
-                <div class="flex items-center gap-4 text-slate-400">
-                    <span><i class="fa-brands fa-cc-visa text-lg"></i></span>
-                    <span><i class="fa-brands fa-cc-mastercard text-lg"></i></span>
-                    <span class="font-bold text-[11px] tracking-wider text-slate-300">PAPARA</span>
-                    <span class="font-bold text-[11px] tracking-wider text-slate-300">FAST / EFT</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ===================================================================== -->
-    <!-- MODAL 1: BAKİYE YÜKLE (DEPOSIT WALLET) -->
-    <!-- ===================================================================== -->
-    <div id="deposit-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="glass-panel border border-blue-500/30 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl animate-[fadeIn_0.2s_ease-out]">
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#080E1C]">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-cyan-400">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-base">Hesaba Bakiye Yükle</h3>
-                        <p class="text-[11px] text-slate-400">7/24 anında hesabınıza bakiye tanımlanır.</p>
-                    </div>
-                </div>
-                <button onclick="closeModal('deposit-modal')" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div class="p-6 space-y-5">
-                <!-- Payment Method Tabs -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-2">1. Ödeme Yöntemi Seçin</label>
-                    <div class="grid grid-cols-3 gap-2.5">
-                        <button type="button" onclick="selectPaymentMethod('card')" id="pay-tab-card" class="pay-method-btn active p-3 rounded-xl border border-cyan-500 bg-blue-600/15 text-white flex flex-col items-center gap-1.5 text-xs font-semibold transition cursor-pointer">
-                            <i class="fa-regular fa-credit-card text-cyan-400 text-base"></i>
-                            <span>Kredi / Banka Kartı</span>
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('eft')" id="pay-tab-eft" class="pay-method-btn p-3 rounded-xl border border-slate-800 bg-[#090F1E] text-slate-400 hover:text-white flex flex-col items-center gap-1.5 text-xs font-semibold transition cursor-pointer">
-                            <i class="fa-solid fa-building-columns text-base"></i>
-                            <span>Havale / EFT</span>
-                        </button>
-                        <button type="button" onclick="selectPaymentMethod('papara')" id="pay-tab-papara" class="pay-method-btn p-3 rounded-xl border border-slate-800 bg-[#090F1E] text-slate-400 hover:text-white flex flex-col items-center gap-1.5 text-xs font-semibold transition cursor-pointer">
-                            <i class="fa-solid fa-paper-plane text-base"></i>
-                            <span>Papara</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Amount Selection -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-2">2. Yüklenecek Tutar (₺)</label>
-                    <div class="grid grid-cols-4 gap-2 mb-3">
-                        <button type="button" onclick="setDepositAmount(100)" class="py-2 rounded-lg bg-[#0D162B] hover:bg-blue-600/30 border border-slate-700 hover:border-cyan-400 text-xs font-bold text-white transition">₺100</button>
-                        <button type="button" onclick="setDepositAmount(250)" class="py-2 rounded-lg bg-[#0D162B] hover:bg-blue-600/30 border border-slate-700 hover:border-cyan-400 text-xs font-bold text-white transition">₺250</button>
-                        <button type="button" onclick="setDepositAmount(500)" class="py-2 rounded-lg bg-[#0D162B] hover:bg-blue-600/30 border border-slate-700 hover:border-cyan-400 text-xs font-bold text-white transition">₺500</button>
-                        <button type="button" onclick="setDepositAmount(1000)" class="py-2 rounded-lg bg-[#0D162B] hover:bg-blue-600/30 border border-slate-700 hover:border-cyan-400 text-xs font-bold text-white transition">₺1.000</button>
-                    </div>
-                    <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-400 font-bold">₺</span>
-                        <input type="number" id="deposit-amount-input" value="250" min="10" max="50000" class="w-full bg-[#070C18] border border-slate-700 focus:border-cyan-400 rounded-xl py-3 pl-9 pr-4 text-white font-bold text-base focus:outline-none" placeholder="Tutar girin...">
-                    </div>
-                </div>
-
-                <!-- Dynamic Payment Details Box -->
-                <div id="payment-method-details" class="bg-[#080E1C] border border-slate-800 rounded-xl p-4 space-y-3 text-xs">
-                    <!-- Card Form Default -->
-                    <div class="grid grid-cols-1 gap-2.5">
-                        <input type="text" value="0000 0000 0000 0000" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="0000 0000 0000 0000">
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <input type="text" value="00/00" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="00/00">
-                            <input type="text" value="000" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="000">
-                        </div>
-                    </div>
-                    <p class="text-[11px] text-emerald-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-lock"></i> 3D Secure ile komisyonsuz anında bakiye yükleme.
-                    </p>
-                </div>
-
-                <button onclick="processDeposit()" class="w-full xax-glow-btn text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm cursor-pointer">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Ödemeyi Tamamla ve Bakiyeyi Yükle</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- MODAL 2: SİPARİŞLERİM / E-PİN KODLARIM -->
-    <!-- ===================================================================== -->
-    <div id="orders-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="glass-panel border border-cyan-500/30 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#080E1C]">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
-                        <i class="fa-solid fa-key"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-base">Teslim Edilen E-Pin Kodlarım</h3>
-                        <p class="text-[11px] text-slate-400">Satın aldığınız tüm dijital kodlar aşağıda listelenir.</p>
-                    </div>
-                </div>
-                <button onclick="closeModal('orders-modal')" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div id="orders-list-container" class="p-6 overflow-y-auto space-y-3 flex-1">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- MODAL 3: YÖNETİCİ / STOK EKLEME PANELİ -->
-    <!-- ===================================================================== -->
-    <div id="admin-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="glass-panel border border-cyan-500/30 rounded-2xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#080E1C]">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-lg bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-bold text-base">XAX E-PIN Yönetici Paneli</h3>
-                        <p class="text-[11px] text-slate-400">Yeni E-Pin ürünü ekleyin ve bakiye/satış hareketlerini izleyin.</p>
-                    </div>
-                </div>
-                <button onclick="closeModal('admin-modal')" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div class="p-6 overflow-y-auto space-y-6">
-                <!-- Add New Product Form -->
-                <div class="bg-[#080E1C] border border-slate-800 rounded-xl p-4 space-y-3">
-                    <h4 class="text-sm font-bold text-cyan-400 flex items-center gap-2">
-                        <i class="fa-solid fa-plus-circle"></i> Mağazaya Yeni E-Pin Ürünü Ekle
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <input type="text" id="admin-prod-name" placeholder="Ürün Adı (örn: Valorant 3650 VP)" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
-                        <select id="admin-prod-cat" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
-                            <option value="valorant">Valorant VP</option>
-                            <option value="steam">Steam E-Pin</option>
-                            <option value="roblox">Roblox Robux</option>
-                            <option value="dijital">Dijital Kodlar</option>
-                        </select>
-                        <input type="number" id="admin-prod-price" placeholder="Satış Fiyatı (₺)" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
-                        <input type="text" id="admin-prod-prefix" placeholder="Kod Ön Eki (örn: XAX-VP)" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
-                    </div>
-                    <button onclick="adminAddProduct()" class="xax-glow-btn text-white text-xs font-bold px-4 py-2.5 rounded-lg cursor-pointer">
-                        Ürünü Mağazaya Ekle
-                    </button>
-                </div>
-
-                <!-- Transaction Logs -->
-                <div class="space-y-2">
-                    <h4 class="text-sm font-bold text-white">Son Bakiye Yükleme ve Satış Kayıtları</h4>
-                    <div id="admin-logs-container" class="space-y-2 max-h-56 overflow-y-auto text-xs">
-                        <!-- Rendered by JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- MODAL 4: GİRİŞ YAP / KAYIT OL -->
-    <!-- ===================================================================== -->
-    <div id="auth-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-        <div class="glass-panel border border-blue-500/30 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-[#080E1C]">
-                <h3 class="text-white font-bold text-base">XAX E-PIN Üye Girişi</h3>
-                <button onclick="closeModal('auth-modal')" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="p-6 space-y-4">
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">Kullanıcı Adı veya E-Posta</label>
-                    <input type="text" id="auth-username-input" placeholder="örn: OyuncuPro34" class="w-full bg-[#090F1E] border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
-                </div>
-                <button onclick="saveUsername()" class="w-full xax-glow-btn text-white font-bold py-3 rounded-xl text-sm cursor-pointer">
-                    Giriş Yap / Hesabı Bağla
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- SLIDE-OVER SHOPPING CART DRAWER -->
-    <!-- ===================================================================== -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 hidden justify-end bg-black/75 backdrop-blur-xs">
-        <div class="w-full max-w-md bg-[#080D1B] border-l border-slate-800 h-full flex flex-col justify-between shadow-2xl">
-            <!-- Header -->
-            <div class="p-5 border-b border-slate-800 flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-solid fa-cart-shopping text-cyan-400"></i>
-                    <h3 class="text-white font-bold text-base">Sepetim</h3>
-                </div>
-                <button onclick="toggleCartDrawer(false)" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <!-- Cart Items List -->
-            <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-3">
-                <!-- Rendered by JS -->
-            </div>
-
-            <!-- Checkout Footer -->
-            <div class="p-5 border-t border-slate-800 bg-[#060A14] space-y-4">
-                <div class="flex items-center justify-between text-xs bg-[#0B1326] border border-slate-800 p-3 rounded-xl">
-                    <span class="text-slate-400">Mevcut Cüzdan Bakiyeniz:</span>
-                    <span id="cart-wallet-display" class="font-bold text-cyan-400 text-sm">₺0,00</span>
-                </div>
-
-                <div class="flex items-center justify-between">
-                    <span class="text-slate-300 text-sm font-medium">Toplam Tutar:</span>
-                    <span id="cart-total-display" class="text-white font-extrabold text-xl">₺0,00</span>
-                </div>
-
-                <!-- Insufficient Balance Warning -->
-                <div id="insufficient-balance-box" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs space-y-2">
-                    <p><i class="fa-solid fa-triangle-exclamation mr-1"></i> Bakiyeniz bu sipariş için yetersiz.</p>
-                    <button onclick="toggleCartDrawer(false); openDepositModal();" class="w-full py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold transition cursor-pointer">
-                        + Hemen Bakiye Yükle
-                    </button>
-                </div>
-
-                <button id="checkout-btn" onclick="completePurchase()" class="w-full xax-glow-btn text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-sm cursor-pointer disabled:opacity-40 disabled:pointer-events-none">
-                    <i class="fa-solid fa-bolt"></i>
-                    <span>Satın Al ve Kodları Teslim Al</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- APPLICATION LOGIC (VANILLA JS + LOCALSTORAGE) -->
-    <!-- ===================================================================== -->
-    <script>
-        // Default E-Pin Products Catalog
-        const DEFAULT_PRODUCTS = [
-            { id: 'vp-475', name: 'Valorant 475 VP', category: 'valorant', price: 130, prefix: 'XAX-VP', badge: 'Popüler', desc: 'TR Sunucusu • Anında E-Pin Kodu' },
-            { id: 'vp-1000', name: 'Valorant 1000 VP', category: 'valorant', price: 260, prefix: 'XAX-VP', badge: 'Çok Satan', desc: 'TR Sunucusu • Anında E-Pin Kodu' },
-            { id: 'vp-2050', name: 'Valorant 2050 VP', category: 'valorant', price: 510, prefix: 'XAX-VP', badge: 'İndirimli', desc: 'TR Sunucusu • Anında E-Pin Kodu' },
-            { id: 'stm-10', name: 'Steam 10 USD Cüzdan Kodu', category: 'steam', price: 360, prefix: 'STM-USD', badge: 'Global/TR', desc: 'Anında Cüzdan Bakiyesi Kodu' },
-            { id: 'stm-20', name: 'Steam 20 USD Cüzdan Kodu', category: 'steam', price: 720, prefix: 'STM-USD', badge: 'Anında Teslim', desc: 'Anında Cüzdan Bakiyesi Kodu' },
-            { id: 'rbx-400', name: 'Roblox 400 Robux E-Pin', category: 'roblox', price: 185, prefix: 'RBX-PIN', badge: 'Hızlı Kod', desc: 'Global Hesaplarla Uyumlu' },
-            { id: 'rbx-800', name: 'Roblox 800 Robux E-Pin', category: 'roblox', price: 365, prefix: 'RBX-PIN', badge: 'Çok Satan', desc: 'Global Hesaplarla Uyumlu' },
-            { id: 'gp-100', name: 'Google Play 100 TL Kodu', category: 'dijital', price: 100, prefix: 'GPLAY-TR', badge: 'TR Kodu', desc: 'Türkiye Mağazası Hediye Kodu' },
-            { id: 'psn-250', name: 'PlayStation Store 250 TL', category: 'dijital', price: 250, prefix: 'PSN-TR', badge: 'TR Kodu', desc: 'PS4 & PS5 Türkiye Cüzdan Kodu' }
-        ];
-
-        // App State with localStorage persistence
-        let state = {
-            balance: parseFloat(localStorage.getItem('xax_balance')) || 0,
-            products: JSON.parse(localStorage.getItem('xax_products')) || DEFAULT_PRODUCTS,
-            cart: JSON.parse(localStorage.getItem('xax_cart')) || [],
-            orders: JSON.parse(localStorage.getItem('xax_orders')) || [],
-            logs: JSON.parse(localStorage.getItem('xax_logs')) || [],
-            username: localStorage.getItem('xax_username') || '',
-            activeCategory: 'all',
-            searchQuery: ''
-        };
-
-        function saveState() {
-            localStorage.setItem('xax_balance', state.balance.toString());
-            localStorage.setItem('xax_products', JSON.stringify(state.products));
-            localStorage.setItem('xax_cart', JSON.stringify(state.cart));
-            localStorage.setItem('xax_orders', JSON.stringify(state.orders));
-            localStorage.setItem('xax_logs', JSON.stringify(state.logs));
-            localStorage.setItem('xax_username', state.username);
-            updateUI();
-        }
-
-        function formatTRY(amount) {
-            return '₺' + Number(amount).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        // Generate realistic unique E-Pin code
-        function generateEpinCode(prefix = 'XAX') {
-            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            const part = (len) => Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-            return `${prefix}-${part(4)}-${part(4)}-${part(4)}`;
-        }
-
-        // Toast Notification System
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            const colors = {
-                success: 'border-emerald-500/50 bg-[#0A1922] text-emerald-300',
-                info: 'border-cyan-500/50 bg-[#0B162C] text-cyan-300',
-                error: 'border-rose-500/50 bg-[#1F0D16] text-rose-300'
-            };
-            const icons = {
-                success: 'fa-circle-check text-emerald-400',
-                info: 'fa-circle-info text-cyan-400',
-                error: 'fa-circle-exclamation text-rose-400'
-            };
-            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl border shadow-2xl text-xs font-semibold transition-all duration-300 ${colors[type]}`;
-            toast.innerHTML = `<i class="fa-solid ${icons[type]} text-base"></i><span>${message}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(8px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 3400);
-        }
-
-        // Category & Search Filtering
-        function filterCategory(cat) {
-            state.activeCategory = cat;
-            document.querySelectorAll('.cat-tab').forEach(btn => {
-                if (btn.dataset.cat === cat) {
-                    btn.className = 'cat-tab active px-4 py-2 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] transition cursor-pointer';
-                } else {
-                    btn.className = 'cat-tab px-4 py-2 rounded-full text-xs font-semibold bg-[#0D1528] text-slate-300 hover:text-white border border-slate-800 transition cursor-pointer';
-                }
-            });
-            renderProducts();
-            if (cat !== 'all') {
-                document.getElementById('urunler').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function handleSearch(query) {
-            state.searchQuery = query.toLowerCase().trim();
-            renderProducts();
-        }
-
-        // Render Product Cards
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            const filtered = state.products.filter(p => {
-                const matchesCat = state.activeCategory === 'all' || p.category === state.activeCategory;
-                const matchesQuery = p.name.toLowerCase().includes(state.searchQuery) || p.desc.toLowerCase().includes(state.searchQuery);
-                return matchesCat && matchesQuery;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 glass-panel rounded-2xl text-slate-400 text-sm">Aramanıza uygun E-Pin ürünü bulunamadı.</div>`;
-                return;
-            }
-
-            const catVisuals = {
-                valorant: { icon: 'fa-crosshairs', color: 'text-rose-400', bg: 'from-rose-950/60 to-[#0B1222]', border: 'hover:border-rose-500/40' },
-                steam: { icon: 'fa-brands fa-steam', color: 'text-sky-400', bg: 'from-blue-950/60 to-[#0B1222]', border: 'hover:border-sky-500/40' },
-                roblox: { icon: 'fa-cube', color: 'text-amber-400', bg: 'from-amber-950/50 to-[#0B1222]', border: 'hover:border-amber-500/40' },
-                dijital: { icon: 'fa-gift', color: 'text-purple-400', bg: 'from-purple-950/60 to-[#0B1222]', border: 'hover:border-purple-500/40' }
-            };
-
-            grid.innerHTML = filtered.map(product => {
-                const vis = catVisuals[product.category] || catVisuals.steam;
-                return `
-                    <div class="group rounded-2xl border border-slate-800/90 ${vis.border} bg-gradient-to-b ${vis.bg} p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(37,99,235,0.18)]">
-                        <div>
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="w-11 h-11 rounded-xl bg-slate-900/90 border border-slate-700/80 flex items-center justify-center ${vis.color} text-xl">
-                                    <i class="fa-solid ${vis.icon}"></i>
-                                </div>
-                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-500/15 text-cyan-300 border border-cyan-500/25">
-                                    ${product.badge || 'Anında Teslim'}
-                                </span>
-                            </div>
-
-                            <h3 class="text-white font-bold text-base group-hover:text-cyan-300 transition">${product.name}</h3>
-                            <p class="text-slate-400 text-xs mt-1">${product.desc}</p>
-
-                            <div class="mt-3 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span>Stokta Var - Anında Teslim</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-5 pt-4 border-t border-slate-800/80 space-y-3">
-                            <div class="flex items-baseline justify-between">
-                                <span class="text-[11px] text-slate-400">Fiyat</span>
-                                <span class="text-xl font-extrabold text-white">${formatTRY(product.price)}</span>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-2">
-                                <button onclick="addToCart('${product.id}', false)" class="py-2.5 px-3 rounded-xl bg-[#0F182E] hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer">
-                                    <i class="fa-solid fa-cart-plus text-cyan-400"></i>
-                                    <span>Sepete Ekle</span>
-                                </button>
-                                <button onclick="addToCart('${product.id}', true)" class="py-2.5 px-3 rounded-xl xax-glow-btn text-white text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer">
-                                    <i class="fa-solid fa-bolt"></i>
-                                    <span>Hemen Al</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Cart Operations
-        function addToCart(productId, openCheckout = false) {
-            const existing = state.cart.find(item => item.id === productId);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                state.cart.push({ id: productId, qty: 1 });
-            }
-            saveState();
-            if (openCheckout) {
-                toggleCartDrawer(true);
-            } else {
-                const prod = state.products.find(p => p.id === productId);
-                showToast(`${prod.name} sepete eklendi!`, 'info');
-            }
-        }
-
-        function updateCartQty(productId, delta) {
-            const idx = state.cart.findIndex(item => item.id === productId);
-            if (idx === -1) return;
-            state.cart[idx].qty += delta;
-            if (state.cart[idx].qty <= 0) {
-                state.cart.splice(idx, 1);
-            }
-            saveState();
-        }
-
-        function toggleCartDrawer(show) {
-            const drawer = document.getElementById('cart-drawer');
-            if (show) {
-                drawer.classList.remove('hidden');
-                drawer.classList.add('flex');
-                renderCart();
-            } else {
-                drawer.classList.add('hidden');
-                drawer.classList.remove('flex');
-            }
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cart-items-container');
-            const totalEl = document.getElementById('cart-total-display');
-            const walletEl = document.getElementById('cart-wallet-display');
-            const warnBox = document.getElementById('insufficient-balance-box');
-            const checkoutBtn = document.getElementById('checkout-btn');
-
-            walletEl.textContent = formatTRY(state.balance);
-
-            if (state.cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-16 space-y-3">
-                        <div class="w-14 h-14 rounded-full bg-slate-900 border border-slate-800 mx-auto flex items-center justify-center text-slate-500 text-xl">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm">Sepetiniz şu anda boş.</p>
-                    </div>
-                `;
-                totalEl.textContent = formatTRY(0);
-                warnBox.classList.add('hidden');
-                checkoutBtn.disabled = true;
-                return;
-            }
-
-            let total = 0;
-            container.innerHTML = state.cart.map(item => {
-                const product = state.products.find(p => p.id === item.id);
-                if (!product) return '';
-                const lineTotal = product.price * item.qty;
-                total += lineTotal;
-                return `
-                    <div class="p-3.5 rounded-xl bg-[#0C1427] border border-slate-800 flex items-center justify-between gap-3">
-                        <div>
-                            <h4 class="text-white font-bold text-xs sm:text-sm">${product.name}</h4>
-                            <p class="text-cyan-400 font-bold text-xs mt-0.5">${formatTRY(lineTotal)}</p>
-                        </div>
-                        <div class="flex items-center gap-2 bg-[#070C18] border border-slate-800 rounded-lg p-1">
-                            <button onclick="updateCartQty('${product.id}', -1)" class="w-6 h-6 rounded hover:bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">-</button>
-                            <span class="text-xs font-bold text-white px-1.5">${item.qty}</span>
-                            <button onclick="updateCartQty('${product.id}', 1)" class="w-6 h-6 rounded hover:bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">+</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            totalEl.textContent = formatTRY(total);
-
-            if (state.balance < total) {
-                warnBox.classList.remove('hidden');
-                checkoutBtn.disabled = true;
-            } else {
-                warnBox.classList.add('hidden');
-                checkoutBtn.disabled = false;
-            }
-        }
-
-        // Complete Purchase & Deliver E-Pin Codes Instantly
-        function completePurchase() {
-            let total = 0;
-            const purchasedCodes = [];
-
-            state.cart.forEach(item => {
-                const product = state.products.find(p => p.id === item.id);
-                if (product) {
-                    total += product.price * item.qty;
-                    for (let i = 0; i < item.qty; i++) {
-                        purchasedCodes.push({
-                            orderId: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
-                            productName: product.name,
-                            code: generateEpinCode(product.prefix),
-                            price: product.price,
-                            date: new Date().toLocaleString('tr-TR')
-                        });
-                    }
-                }
-            });
-
-            if (total === 0 || state.balance < total) {
-                showToast('Yetersiz bakiye! Lütfen önce bakiye yükleyin.', 'error');
-                return;
-            }
-
-            state.balance -= total;
-            state.orders = [...purchasedCodes, ...state.orders];
-            state.logs.unshift({
-                type: 'SATIŞ',
-                detail: `${purchasedCodes.length} adet E-Pin teslim edildi (${formatTRY(total)})`,
-                date: new Date().toLocaleString('tr-TR')
-            });
-            state.cart = [];
-            saveState();
-
-            toggleCartDrawer(false);
-            showToast('Ödeme onaylandı! E-Pin kodlarınız anında teslim edildi.', 'success');
-            openOrdersModal();
-        }
-
-        // Deposit Wallet Modal Logic
-        let selectedPayMethod = 'card';
-        function openDepositModal() {
-            const modal = document.getElementById('deposit-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function setDepositAmount(amt) {
-            document.getElementById('deposit-amount-input').value = amt;
-        }
-
-        function selectPaymentMethod(method) {
-            selectedPayMethod = method;
-            document.querySelectorAll('.pay-method-btn').forEach(btn => {
-                btn.className = 'pay-method-btn p-3 rounded-xl border border-slate-800 bg-[#090F1E] text-slate-400 hover:text-white flex flex-col items-center gap-1.5 text-xs font-semibold transition cursor-pointer';
-            });
-            document.getElementById('pay-tab-' + method).className = 'pay-method-btn active p-3 rounded-xl border border-cyan-500 bg-blue-600/15 text-white flex flex-col items-center gap-1.5 text-xs font-semibold transition cursor-pointer';
-
-            const details = document.getElementById('payment-method-details');
-            if (method === 'card') {
-                details.innerHTML = `
-                    <div class="grid grid-cols-1 gap-2.5">
-                        <input type="text" value="0000 0000 0000 0000" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="0000 0000 0000 0000">
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <input type="text" value="00/00" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="00/00">
-                            <input type="text" value="000" class="bg-[#0D1528] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none" placeholder="000">
-                        </div>
-                    </div>
-                    <p class="text-[11px] text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-lock"></i> 3D Secure ile komisyonsuz anında bakiye yükleme.</p>
-                `;
-            } else if (method === 'eft') {
-                details.innerHTML = `
-                    <div class="flex items-center justify-between bg-[#0D1528] p-2.5 rounded-lg border border-slate-700">
-                        <div>
-                            <div class="text-[10px] text-slate-400">Banka / FAST IBAN (XAX Dijital A.Ş.)</div>
-                            <div class="font-mono text-cyan-300 font-bold select-all">TR00 0000 0000 0000 0000 0000 00</div>
-                        </div>
-                        <button type="button" onclick="copyText('TR00 0000 0000 0000 0000 0000 00')" class="px-2.5 py-1.5 rounded bg-blue-600 text-white text-[11px] font-bold cursor-pointer">Kopyala</button>
-                    </div>
-                    <p class="text-[11px] text-slate-400">7/24 FAST ile gönderim yaptıktan sonra aşağıdaki butona tıklayın.</p>
-                `;
-            } else {
-                details.innerHTML = `
-                    <div class="flex items-center justify-between bg-[#0D1528] p-2.5 rounded-lg border border-slate-700">
-                        <div>
-                            <div class="text-[10px] text-slate-400">XAX Kurumsal Papara Hesap No</div>
-                            <div class="font-mono text-cyan-300 font-bold">0000000000</div>
-                        </div>
-                        <button type="button" onclick="copyText('0000000000')" class="px-2.5 py-1.5 rounded bg-blue-600 text-white text-[11px] font-bold cursor-pointer">Kopyala</button>
-                    </div>
-                    <p class="text-[11px] text-slate-400">Papara transferi sonrası bakiyeniz otomatik onaylanır.</p>
-                `;
-            }
-        }
-
-        function processDeposit() {
-            const amount = parseFloat(document.getElementById('deposit-amount-input').value);
-            if (isNaN(amount) || amount < 10) {
-                showToast('Lütfen en az ₺10 geçerli bir tutar girin.', 'error');
-                return;
-            }
-            state.balance += amount;
-            const methodNames = { card: 'Kredi/Banka Kartı', eft: 'Havale/EFT', papara: 'Papara' };
-            state.logs.unshift({
-                type: 'BAKİYE YÜKLEME',
-                detail: `${methodNames[selectedPayMethod]} ile +${formatTRY(amount)} yüklendi`,
-                date: new Date().toLocaleString('tr-TR')
-            });
-            saveState();
-            closeModal('deposit-modal');
-            showToast(`Hesabınıza ${formatTRY(amount)} bakiye başarıyla yüklendi!`, 'success');
-        }
-
-        // Delivered Codes Modal
-        function openOrdersModal() {
-            const modal = document.getElementById('orders-modal');
-            const container = document.getElementById('orders-list-container');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-
-            if (state.orders.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 space-y-2">
-                        <i class="fa-solid fa-key text-3xl text-slate-600"></i>
-                        <p class="text-slate-400 text-sm">Henüz satın alınmış bir E-Pin kodunuz bulunmuyor.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = state.orders.map(order => `
-                <div class="p-4 rounded-xl bg-[#091020] border border-cyan-500/25 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">TESLİM EDİLDİ</span>
-                            <span class="text-[11px] text-slate-500">${order.date}</span>
-                        </div>
-                        <h4 class="text-white font-bold text-sm mt-1">${order.productName}</h4>
-                    </div>
-                    <div class="flex items-center gap-2 bg-[#050811] border border-slate-700 rounded-xl px-3 py-2">
-                        <code class="font-mono text-cyan-300 font-bold text-xs sm:text-sm tracking-wider select-all">${order.code}</code>
-                        <button onclick="copyText('${order.code}')" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition cursor-pointer shrink-0">
-                            <i class="fa-regular fa-copy mr-1"></i>Kopyala
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Admin Modal Logic
-        function openAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            renderAdminLogs();
-        }
-
-        function adminAddProduct() {
-            const name = document.getElementById('admin-prod-name').value.trim();
-            const category = document.getElementById('admin-prod-cat').value;
-            const price = parseFloat(document.getElementById('admin-prod-price').value);
-            const prefix = document.getElementById('admin-prod-prefix').value.trim().toUpperCase() || 'XAX-PIN';
-
-            if (!name || isNaN(price) || price <= 0) {
-                showToast('Lütfen ürün adı ve geçerli bir fiyat girin.', 'error');
-                return;
-            }
-
-            state.products.unshift({
-                id: 'custom-' + Date.now(),
-                name,
-                category,
-                price,
-                prefix,
-                badge: 'Yeni Ürün',
-                desc: 'Anında Otomatik Teslim E-Pin'
-            });
-
-            document.getElementById('admin-prod-name').value = '';
-            document.getElementById('admin-prod-price').value = '';
-            saveState();
-            renderProducts();
-            showToast(`${name} mağazaya başarıyla eklendi!`, 'success');
-        }
-
-        function renderAdminLogs() {
-            const container = document.getElementById('admin-logs-container');
-            if (state.logs.length === 0) {
-                container.innerHTML = `<p class="text-slate-500 py-4 text-center">Henüz işlem kaydı bulunmuyor.</p>`;
-                return;
-            }
-            container.innerHTML = state.logs.map(log => `
-                <div class="p-2.5 rounded-lg bg-[#090F1E] border border-slate-800 flex items-center justify-between">
-                    <div>
-                        <span class="font-bold ${log.type === 'SATIŞ' ? 'text-emerald-400' : 'text-cyan-400'} mr-2">[${log.type}]</span>
-                        <span class="text-slate-300">${log.detail}</span>
-                    </div>
-                    <span class="text-[10px] text-slate-500">${log.date}</span>
-                </div>
-            `).join('');
-        }
-
-        // Auth & Support Helpers
-        function openAuthModal() {
-            document.getElementById('auth-username-input').value = state.username;
-            const modal = document.getElementById('auth-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function saveUsername() {
-            const val = document.getElementById('auth-username-input').value.trim();
-            state.username = val;
-            saveState();
-            closeModal('auth-modal');
-            showToast(val ? `Hoş geldin, ${val}!` : 'Çıkış yapıldı.', 'info');
-        }
-
-        function openSupportModal() {
-            showToast('7/24 Canlı Destek hattımız aktif! Sipariş ve bakiye sorularınız için yanınızdayız.', 'info');
-        }
-
-        // Clipboard Copy Helper
-        function copyText(text) {
-            const temp = document.createElement('textarea');
-            temp.value = text;
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand('copy');
-            document.body.removeChild(temp);
-            showToast(`Kopyalandı: ${text}`, 'success');
-        }
-
-        // Global UI Sync
-        function updateUI() {
-            document.getElementById('wallet-balance-display').textContent = formatTRY(state.balance);
-            const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cart-badge').textContent = totalItems;
-
-            const ordersBadge = document.getElementById('nav-orders-badge');
-            if (state.orders.length > 0) {
-                ordersBadge.textContent = state.orders.length;
-                ordersBadge.classList.remove('hidden');
-            } else {
-                ordersBadge.classList.add('hidden');
-            }
-
-            const authText = document.getElementById('auth-btn-text');
-            authText.textContent = state.username ? state.username : 'Giriş Yap / Kayıt Ol';
-
-            renderCart();
-        }
-
-        // Initialize on load
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateUI();
-        });
-    </script>
+<body>
+
+<div class="topbar">XAX E EPIN STORE — OYUN DÜNYASINA HOŞ GELDİN</div>
+
+<header>
+<div class="container nav">
+<a class="logo" href="#">XAX<span>.</span>STORE</a>
+<nav class="navlinks">
+<a href="#anasayfa">Ana Sayfa</a>
+<a href="#urunler">Ürünler</a>
+<a href="#hakkimizda">Hakkımızda</a>
+<a href="#sss">SSS</a>
+</nav>
+<div class="navright">
+<button class="navbtn" onclick="showFavorites()">Favoriler</button>
+<button class="navbtn" onclick="openCart()">Sepet <span class="cart-count" id="cartCount">0</span></button>
+</div>
+</div>
+</header>
+
+<main>
+<section class="hero" id="anasayfa">
+<div class="container">
+<div class="hero-content">
+<div class="tag">XAX STORE'A HOŞ GELDİN</div>
+<h1>OYUNUNU<br><span>GÜÇLENDİR.</span></h1>
+<p>Favori oyunların için dijital ürünleri keşfet. Oyun dünyasına bir adım daha yaklaş ve sana uygun ürünleri kolayca bul.</p>
+<div class="hero-actions">
+<a href="#urunler" class="primary">ÜRÜNLERİ KEŞFET →</a>
+<a href="#hakkimizda" class="secondary">BİZ KİMİZ?</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="container">
+<section class="benefits">
+<div class="benefit"><div class="benefit-icon">▣</div><div><strong>Oyun Ürünleri</strong><small>Farklı oyun kategorileri</small></div></div>
+<div class="benefit"><div class="benefit-icon">◇</div><div><strong>Güvenli Tasarım</strong><small>Kolay ve anlaşılır arayüz</small></div></div>
+<div class="benefit"><div class="benefit-icon">↗</div><div><strong>Kolay Kullanım</strong><small>Pratik alışveriş deneyimi</small></div></div>
+<div class="benefit"><div class="benefit-icon">✉</div><div><strong>Destek</strong><small>İletişim alanı</small></div></div>
+</section>
+
+<section class="section" id="urunler">
+<div class="section-head">
+<div><h2>Ürün Mağazası</h2><p>Aradığın dijital ürünü keşfet.</p></div>
+<input class="search" id="searchInput" placeholder="Ürün ara..." oninput="renderProducts()">
+</div>
+<div class="filters" id="filters">
+<button class="filter active" data-category="Tümü">Tümü</button>
+<button class="filter" data-category="Steam">Steam</button>
+<button class="filter" data-category="Roblox">Roblox</button>
+<button class="filter" data-category="Valorant">Valorant</button>
+<button class="filter" data-category="PUBG">PUBG</button>
+<button class="filter" data-category="Diğer">Diğer</button>
+<button class="filter" data-category="Favoriler">Favoriler</button>
+</div>
+<div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="info-grid" id="hakkimizda">
+<div class="info-card">
+<div class="big-icon">◎</div>
+<h3>XAX Store Nedir?</h3>
+<p>XAX Store, oyun tutkunları için hazırlanmış dijital mağaza arayüzüdür. Farklı kategorilerdeki ürünleri inceleyebilir, favorilerine ekleyebilir ve sepetini düzenleyebilirsin.</p>
+</div>
+<div class="info-card">
+<div class="big-icon">✦</div>
+<h3>Kolay Alışveriş Deneyimi</h3>
+<p>Aradığın ürünü bul, detaylarını incele ve sepetine ekle. Bu sürüm tanıtım ve demo amaçlıdır; gerçek ödeme veya ürün teslimatı gerçekleştirmez.</p>
+</div>
+</section>
+
+<section class="faq" id="sss">
+<h2>Sıkça Sorulan Sorular</h2>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Sepete nasıl ürün eklerim? <span>＋</span></button>
+<div class="faq-answer">Ürün kartındaki sepete ekle butonuna basarak ürünü sepetine ekleyebilirsin.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Favorilerimi nerede görebilirim? <span>＋</span></button>
+<div class="faq-answer">Üst menüdeki favoriler butonuna basarak favorilerine eklediğin ürünleri görebilirsin.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Gerçek ödeme yapılıyor mu? <span>＋</span></button>
+<div class="faq-answer">Hayır. Bu sürüm yalnızca demo arayüzüdür. Gerçek ödeme, sipariş ve ürün teslimatı sistemi bağlı değildir.</div>
+</div>
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Ürün görsellerini nasıl değiştiririm? <span>＋</span></button>
+<div class="faq-answer">images klasöründeki görselleri değiştirerek ürün kartlarında kullanılan fotoğrafları güncelleyebilirsin.</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="container footer-content">
+<div>
+<div class="logo">XAX<span>.</span>STORE</div>
+<p>© 2026 XAX Store. Tüm hakları saklıdır.</p>
+<p>Demo mağaza arayüzüdür. Gerçek satış yapılmamaktadır.</p>
+</div>
+<div class="footer-links">
+<a href="#anasayfa">Ana Sayfa</a>
+<a href="#urunler">Ürünler</a>
+<a href="#sss">Yardım</a>
+</div>
+</div>
+</footer>
+
+<div class="overlay" id="cartOverlay" onclick="overlayClose(event,'cartOverlay')">
+<div class="modal">
+<div class="modal-head"><h2>Sepetim</h2><button class="close" onclick="closeModal('cartOverlay')">×</button></div>
+<div id="cartItems"></div>
+<div class="cart-total"><span>Toplam</span><strong id="cartTotal">0,00 TL</strong></div>
+<button class="primary full" onclick="checkout()">DEMO SİPARİŞİ TAMAMLA</button>
+<p class="notice">Bu demo sürümünde gerçek ödeme alınmaz ve ürün teslimatı yapılmaz.</p>
+</div>
+</div>
+
+<div class="overlay" id="detailOverlay" onclick="overlayClose(event,'detailOverlay')">
+<div class="modal">
+<div class="modal-head"><h2>Ürün Detayı</h2><button class="close" onclick="closeModal('detailOverlay')">×</button></div>
+<div id="detailContent"></div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS=[
+{id:1,name:"PUBG Mobile UC",category:"PUBG",price:110,image:"images/pubg.jpg",desc:"PUBG Mobile UC ürün kartı."},
+{id:2,name:"Steam Cüzdan",category:"Steam",price:100,image:"images/steam.jpg",desc:"Steam dijital ürün kartı."},
+{id:3,name:"Valorant VP",category:"Valorant",price:150,image:"images/valorant.jpg",desc:"Valorant VP ürün kartı."},
+{id:4,name:"Roblox Robux",category:"Roblox",price:120,image:"images/roblox.jpg",desc:"Roblox Robux ürün kartı."}
+];
+
+let cart=JSON.parse(localStorage.getItem("xax_cart")||"[]");
+let favorites=JSON.parse(localStorage.getItem("xax_favorites")||"[]");
+let activeCategory="Tümü";
+
+const money=v=>v.toLocaleString("tr-TR",{style:"currency",currency:"TRY"});
+
+function save(){
+localStorage.setItem("xax_cart",JSON.stringify(cart));
+localStorage.setItem("xax_favorites",JSON.stringify(favorites));
+updateCartCount();
+}
+
+function updateCartCount(){
+document.getElementById("cartCount").textContent=cart.reduce((s,i)=>s+i.quantity,0);
+}
+
+function renderProducts(){
+const q=document.getElementById("searchInput").value.toLocaleLowerCase("tr");
+const list=PRODUCTS.filter(p=>
+p.name.toLocaleLowerCase("tr").includes(q)&&
+(activeCategory==="Tümü"||
+(activeCategory==="Favoriler"?favorites.includes(p.id):p.category===activeCategory))
+);
+const grid=document.getElementById("productGrid");
+
+if(!list.length){
+grid.innerHTML='<div class="empty">Bu kategoride ürün bulunamadı.</div>';
+return;
+}
+
+grid.innerHTML=list.map(p=>`
+<article class="product">
+<div class="product-art" onclick="showDetail(${p.id})">
+<img src="${p.image}" alt="${p.name}" loading="lazy">
+<button class="favorite ${favorites.includes(p.id)?"active":""}" onclick="event.stopPropagation();toggleFavorite(${p.id})">${favorites.includes(p.id)?"♥":"♡"}</button>
+</div>
+<div class="product-info">
+<div class="product-category">${p.category}</div>
+<h3>${p.name}</h3>
+<p class="product-desc">${p.desc}</p>
+<div class="product-bottom">
+<div class="price">${money(p.price)}</div>
+<button class="add" onclick="addToCart(${p.id})">Sepete Ekle</button>
+</div>
+<button class="details-link" onclick="showDetail(${p.id})">Ürün detayını gör →</button>
+</div>
+</article>`).join("");
+}
+
+document.getElementById("filters").addEventListener("click",e=>{
+const b=e.target.closest(".filter");
+if(!b)return;
+activeCategory=b.dataset.category;
+document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
+renderProducts();
+});
+
+function addToCart(id){
+const p=PRODUCTS.find(x=>x.id===id);
+const i=cart.find(x=>x.id===id);
+if(i)i.quantity++;
+else cart.push({id,quantity:1});
+save();
+showToast(p.name+" sepete eklendi");
+}
+
+function toggleFavorite(id){
+favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+save();
+renderProducts();
+showToast("Favoriler güncellendi");
+}
+
+function showFavorites(){
+document.getElementById("searchInput").value="";
+activeCategory="Favoriler";
+document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.category==="Favoriler"));
+renderProducts();
+document.getElementById("urunler").scrollIntoView({behavior:"smooth"});
+}
+
+function openCart(){
+renderCart();
+document.getElementById("cartOverlay").classList.add("show");
+}
+
+function renderCart(){
+const box=document.getElementById("cartItems");
+if(!cart.length){
+box.innerHTML='<div class="empty">Sepetin şu anda boş.</div>';
+document.getElementById("cartTotal").textContent=money(0);
+return;
+}
+
+let total=0;
+box.innerHTML=cart.map(i=>{
+const p=PRODUCTS.find(x=>x.id===i.id);
+if(!p)return"";
+total+=p.price*i.quantity;
+return `
+<div class="cart-item">
+<img class="cart-thumb" src="${p.image}" alt="">
+<div class="cart-details">
+<strong>${p.name}</strong>
+<small>${money(p.price)} / adet</small>
+</div>
+<div class="quantity">
+<button onclick="changeQuantity(${p.id},-1)">−</button>
+<span>${i.quantity}</span>
+<button onclick="changeQuantity(${p.id},1)">+</button>
+</div>
+</div>`;
+}).join("");
+
+document.getElementById("cartTotal").textContent=money(total);
+}
+
+function changeQuantity(id,n){
+const i=cart.find(x=>x.id===id);
+if(!i)return;
+i.quantity+=n;
+if(i.quantity<=0)cart=cart.filter(x=>x.id!==id);
+save();
+renderCart();
+}
+
+function showDetail(id){
+const p=PRODUCTS.find(x=>x.id===id);
+document.getElementById("detailContent").innerHTML=`
+<img class="detail-image" src="${p.image}" alt="${p.name}">
+<div class="product-category">${p.category}</div>
+<h2 style="margin-top:8px">${p.name}</h2>
+<p style="color:#999;font-size:12px;line-height:1.7;margin-top:10px">${p.desc}</p>
+<div class="detail-price">${money(p.price)}</div>
+<button class="primary full" onclick="addToCart(${p.id});closeModal('detailOverlay')">SEPETE EKLE</button>
+<p class="notice">Demo ürünüdür. Gerçek ürün veya kod teslimatı yapılmaz.</p>`;
+document.getElementById("detailOverlay").classList.add("show");
+}
+
+function checkout(){
+if(!cart.length){
+showToast("Sepetin boş!");
+return;
+}
+alert("Bu bir demo mağazadır. Gerçek ödeme veya sipariş oluşturulmadı.");
+}
+
+function closeModal(id){
+document.getElementById(id).classList.remove("show");
+}
+
+function overlayClose(e,id){
+if(e.target.id===id)closeModal(id);
+}
+
+function toggleFaq(b){
+const item=b.parentElement;
+item.classList.toggle("open");
+b.querySelector("span").textContent=item.classList.contains("open")?"−":"＋";
+}
+
+let toastTimer;
+function showToast(msg){
+const t=document.getElementById("toast");
+t.textContent=msg;
+t.classList.add("show");
+clearTimeout(toastTimer);
+toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+renderProducts();
+updateCartCount();
+</script>
 </body>
 </html>
